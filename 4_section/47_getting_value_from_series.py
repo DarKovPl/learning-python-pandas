@@ -47,3 +47,25 @@ print(f"s = pd.Series(values, index) : \n"
       )
 
 print('------------------------------------------------')
+
+print('5 - method loc() - getting value by value of the index')
+
+print(f"s = pd.Series(values, index) : \n"
+      #f"\ns.loc[1] getting value by position: ERROR - \n{s.loc[1]}\n"
+      f"\ns.loc['b'] getting value by value of index: - \n{s.loc['b']}\n"
+      f"\ns.loc['e'] getting multiple values: Series- \n{s.loc['e']} \n"
+      # f"\ns.loc['f'] getting non existing value: ERROR - {s.loc['f']}\n"
+      )
+
+print('------------------------------------------------')
+
+print('6 - method iloc() - getting value by position in index')
+
+print(f"s = pd.Series(values, index) : \n"
+      f"\ns.iloc[1] getting value by position: value - \n{s.iloc[1]}\n"
+      # f"\ns.iloc['b'] getting value by index: ERROR only integers - \n{s.iloc['b']}\n"
+      f"\ns.iloc[[0, 1]] getting multiple values: Series - \n{s.iloc[[0, 1]]} \n"
+      # f"\ns.iloc['f'] getting non existing value: ERROR - {s.iloc['f']}\n"
+      )
+
+print('------------------------------------------------')
