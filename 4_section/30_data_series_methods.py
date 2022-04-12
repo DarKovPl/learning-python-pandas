@@ -50,3 +50,44 @@ print(dict_country)
 print('------------------------------------------------')
 dict_country = {'USD': 'USA', 'USD': 'Ecuador'}
 print(dict_country)
+print('********************FIRST*****************************')
+
+# Laboratory
+
+cities = ['Shanghai', 'Beijing', 'Istanbul']
+population = [24183300, 20794100, 15030000]
+
+print('1')
+
+city_pop_series = pd.Series(population, cities)
+print(f'city_pop_series : \n{city_pop_series}')
+print('**************')
+
+print('2')
+
+city_pop_series = pd.Series(index=cities, data=population)
+print(f'city_pop_series : \n{city_pop_series}')
+print('**************')
+
+print('3')
+
+print(f'city_pop_series.sum() : \n{city_pop_series.sum()}')
+print('**************')
+
+print('4')
+
+print(f'city_pop_series.mean() : \n{city_pop_series.mean()}')
+print('**************')
+
+print('5')
+
+print(f'city_pop_series.index : \n{city_pop_series.index}')
+print(f'city_pop_series.keys() : \n{city_pop_series.keys()}')
+print('**************')
+
+print('6')
+
+print(f'city_pop_series.values : \n{city_pop_series.values}')
+print(f'pd.__version__ : \n{pd.__version__}')
+print('**************')
+

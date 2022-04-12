@@ -1,4 +1,5 @@
 import pandas as pd
+import random as rnd
 
 cities = ['London', 'Berlin', 'Warsaw', 'Paris']
 
@@ -41,6 +42,58 @@ print('-----')
 print(f'.is_monotonic :  {string_series.is_monotonic}')
 print(f'.is_monotonic_increasing :  {string_series.is_monotonic_increasing}')
 print(f'.is_monotonic_decreasing :  {string_series.is_monotonic_decreasing}')
-print('------------------------------------------------')
+print('***********************FIRST*************************')
 
+# Laboratory
 
+data_as_float_list = [i * rnd.random() for i in range(100000)]
+data_as_float_series = pd.Series(data_as_float_list)
+
+print('1')
+print(f'data_as_float_series.size : \n{data_as_float_series.size}')
+print('************')
+
+print('2')
+print(f'data_as_float_series.nbytes : \n{data_as_float_series.nbytes}')
+print(f'data_as_float_series.memory_usage(deep=True) : \n{data_as_float_series.memory_usage(deep=True)}')
+print('************')
+
+print('3')
+print(f'data_as_float_series.shape : \n{data_as_float_series.shape}')
+print('************')
+
+print('4')
+print(f'data_as_float_series.axes : \n{data_as_float_series.axes}')
+print('************')
+
+print('5')
+print(f'data_as_float_series.dtype : \n{data_as_float_series.dtype}')
+print('************')
+
+print('6')
+print(f'data_as_float_series.index : \n{data_as_float_series.index}')
+print('************')
+
+print('7')
+print(f'data_as_float_series.is_unique : \n{data_as_float_series.is_unique}')
+print('************')
+
+print('8')
+print(f'data_as_float_series.is_monotonic : \n{data_as_float_series.is_monotonic}')
+print('********************SECOND****************************')
+
+data_as_string_list = [str(i * rnd.random()) for i in range(100000)]
+data_as_string_series = pd.Series(data_as_string_list)
+
+print('1')
+print(f'data_as_string_series.size : \n{data_as_string_series.size}')
+print('************')
+
+print('2')
+print(f'data_as_string_series.nbytes: \n{data_as_string_series.nbytes}')
+print(f'data_as_string_series..memory_usage(deep=True): \n{data_as_string_series.memory_usage(deep=True)}')
+print('************')
+
+print('3')
+print(f'ata_as_string_series.dtype : \n{data_as_string_series.dtype}')
+print('************')
