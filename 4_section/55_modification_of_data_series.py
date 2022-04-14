@@ -54,4 +54,72 @@ print('------------------------------------------------')
 print('7')
 
 print(f'second_series.apply(lambda a_text: a_text.upper()) : \n{second_series.apply(lambda a_text: a_text.upper())}')
-print('------------------------------------------------')
+print('************************************************')
+
+# Laboratory
+
+print('1')
+
+surveys = pd.read_csv(
+    '../files_to_process/course-files/StackOverflowDeveloperSurvey.csv',
+    usecols=['Salary']
+).squeeze().dropna()
+
+print(f'surveys : \n{surveys}')
+print('************************************************')
+
+print('2')
+
+print(f'len(surveys) : \n{surveys}')
+print('************************************************')
+
+print('3')
+
+surveys_increase = surveys * 0.03
+print(f'surveys_increase.head() : \n{surveys_increase.head()}')
+print('************************************************')
+
+print('4')
+
+surveys_after_increase = surveys + surveys_increase
+print(f'surveys_after_increase.head() : \n{surveys_after_increase.head()}')
+print('************************************************')
+
+print('5')
+
+surveys_time = pd.read_csv(
+    '../files_to_process/course-files/StackOverflowDeveloperSurvey2018.csv',
+    usecols=['HoursOutside'],
+    low_memory=False
+).squeeze().dropna()
+
+print(f'surveys_time.head() : \n{surveys_time.head()}')
+print('************************************************')
+
+print('6')
+
+print(f'surveys_time.value_counts() : \n{surveys_time.value_counts()}')
+print('************************************************')
+
+print('7')
+
+print(f'surveys_time.str.lower().head() : \n{surveys_time.str.lower().head()}')
+print('************************************************')
+
+print('8')
+
+print(f'surveys_time.apply(lambda x: x.upper()) : \n{surveys_time.apply(lambda x: x.upper())}')
+print('************************************************')
+
+print('9')
+
+
+def change_description(string):
+    if string.upper() == 'LESS THAN 30 MINUTES':
+        return 'LESS THAN HALF HOUR'
+    else:
+        return string
+
+
+print(f'surveys_time.apply(change_description) {surveys_time.apply(change_description)}')
+print('************************************************')

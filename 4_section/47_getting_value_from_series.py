@@ -68,4 +68,49 @@ print(f"s = pd.Series(values, index) : \n"
       # f"\ns.iloc['f'] getting non existing value: ERROR - {s.iloc['f']}\n"
       )
 
-print('------------------------------------------------')
+print('*************************************************')
+
+#  Laboratory
+
+print('2')
+
+countries = pd.read_csv(
+      '../files_to_process/course-files/countries.csv',
+      usecols=['Symbol', 'Name'],
+      index_col='Symbol'
+).squeeze()
+print(f'countries : \n{countries}')
+print('*************************************************')
+
+print('3')
+
+print(f'countries.head(20) : \n{countries.head(20)}')
+print('*************************************************')
+
+print('4')
+
+print(f"countries.loc['FR'] : \n{countries.loc['FR']}")
+print('*************************************************')
+
+print('5')
+
+print(f"countries.iloc[13] : \n{countries.iloc[13]}")
+print('*************************************************')
+
+print('6')
+
+nordic = countries.loc[['FI', 'SE', 'NO']]
+print(f"nordic = countries.loc[['FI', 'SE', 'NO']] : \n{nordic}")
+print('*************************************************')
+
+print('7')
+
+
+print(f"countries[nordic.index] : \n{countries[nordic.index]}")
+print('*************************************************')
+
+print('8')
+
+
+print(f"countries.loc[nordic.index] : \n{countries.loc[nordic.index]}")
+print('*************************************************')

@@ -42,4 +42,41 @@ print(f"s.index"
       f"\n{s.loc[s.index.intersection(searched_list_not_found)]}\n"
       )
 print('Intersection handles duplicates, but if you add the existing value again, this value will be multiplexed.')
-print('------------------------------------------------')
+print('*************************************************')
+
+# Laboratory
+
+print('2')
+
+countries = pd.read_csv(
+      '../files_to_process/course-files/countries.csv',
+      usecols=['Symbol', 'Name'],
+      index_col='Symbol'
+).squeeze()
+
+print(f'{countries.to_string()}')
+print('*************************************************')
+
+print('3')
+
+countries.dropna(inplace=True)
+print(f'countries.dropna(inplace=True) : \n{countries}')
+print('*************************************************')
+
+print('4')
+
+print(f'countries.head(20) : \n{countries.head(20)}')
+print('*************************************************')
+
+print('5')
+
+to_find = ['BB', 'AA', 'BS']
+print(f'countries.reindex(to_find) : \n{countries.reindex(to_find)}')
+print('*************************************************')
+
+print('6')
+
+print(f'countries.loc[countries.index.intersection(to_find)] : '
+      f'\n{countries.loc[countries.index.intersection(to_find)]}')
+print('*************************************************')
+
