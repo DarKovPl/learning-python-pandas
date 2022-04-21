@@ -78,4 +78,67 @@ print('-----------------------------------------------')
 print('15')
 
 print(f'frame.sample(frac=0.05) : \n{frame.sample(frac=0.05)}')
-print('-----------------------------------------------')
+print('***********************************************')
+
+# Laboratory
+
+fuel = pd.read_csv(
+    '../files_to_process/course-files/fuel.csv',
+    low_memory=False,
+    usecols=['Vehicle ID', 'Year', 'Make', 'Model', 'Class', 'Fuel Type', 'Combined MPG (FT1)'],
+)
+
+print('2')
+
+print(f"fuel.info() : \n{fuel.info()}")
+print('***********************************************')
+
+print('3')
+
+print(f"fuel.dtypes : \n{fuel.dtypes}")
+print('***********************************************')
+
+print('4')
+
+print(f"fuel.dtypes.value_counts() : \n{fuel.dtypes.value_counts()}")
+print('***********************************************')
+
+print('5')
+
+print(f"fuel.value_counts(subset=['Make']) : \n{fuel.value_counts(subset=['Make'])}")
+print('***********************************************')
+
+print('6')
+
+print(f"fuel.index : \n{fuel.index}")
+print('***********************************************')
+
+print('7')
+
+print(f"fuel.columns : \n{fuel.columns}")
+print('***********************************************')
+
+print('8')
+
+print(f"fuel.values : \n{fuel.values}")
+print('***********************************************')
+
+print('9')
+
+print(f"fuel.axes : \n{fuel.axes}")
+print('***********************************************')
+
+print('10')
+
+print(f"fuel.shape : \n{fuel.shape}")
+print('***********************************************')
+
+print('11')
+
+print(f"fuel.count() : \n{fuel.count()}")
+print('***********************************************')
+
+print('12')
+
+print(f"len(fuel) : \n{len(fuel)}")
+print('***********************************************')

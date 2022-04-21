@@ -66,4 +66,47 @@ print('9')
 
 frame = frame.drop(columns=["sugar_and_fat"])
 print(f'frame = frame.drop(columns=["sugar_and_fat"]) : \n{frame.head()}')
-print('------------------------------------------------')
+print('************************************************')
+
+# Laboratory
+
+print('1')
+
+fuel = pd.read_csv(
+    '../files_to_process/course-files/fuel.csv',
+    low_memory=False,
+    usecols=['Vehicle ID', 'Year', 'Make', 'Model', 'Class', 'Fuel Type', 'Combined MPG (FT1)']
+)
+
+print(f"fuel.head() : \n{fuel.head()}")
+print('************************************************')
+
+print('2')
+
+kilometre_range = fuel['Combined MPG (FT1)'] * 1.609 / 3.78
+fuel['Combined KPL'] = kilometre_range
+
+print("kilometre_range = fuel['Combined MPG (FT1)'] * 1.609 / 3.78")
+print("fuel['Combined KPL'] = kilometre_range")
+print(f"fuel.head(10).to_string() : \n{fuel.head(10).to_string()}")
+print('************************************************')
+
+print('4')
+
+fuel.insert(loc=4, column='liters per km', value=100 / fuel['Combined KPL'])
+
+print("fuel.insert(loc=4, column='liters per km', value=100 / fuel['Combined KPL'])")
+print(f"fuel.head().to_string() : \n{fuel.head().to_string()}")
+print('************************************************')
+
+print('6')
+
+fuel.drop(columns=['Combined MPG (FT1)'], inplace=True)
+print(f"{fuel.head().to_string()}")
+print('************************************************')
+
+print('7')
+
+del fuel['Combined KPL']
+print("del fuel['Combined KPL']")
+print(f"fuel.head().to_string() : \n{fuel.head().to_string()}")

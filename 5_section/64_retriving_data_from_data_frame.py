@@ -75,4 +75,65 @@ print('------------------------------------------------')
 print('14')
 
 print(f"frame[['Item', 'Calories', 'TotalFat']].head() : \n{frame[['Item', 'Calories', 'TotalFat']].head()}")
-print('------------------------------------------------')
+print('************************************************')
+
+
+# Laboratory
+
+print('1')
+
+fuel = pd.read_csv(
+    '../files_to_process/course-files/fuel.csv',
+    low_memory=False,
+    usecols=['Vehicle ID', 'Year', 'Make', 'Model', 'Class', 'Fuel Type', 'Combined MPG (FT1)'],
+    index_col='Vehicle ID'
+)
+
+print(f"fuel.head() : \n{fuel.head()}")
+print('************************************************')
+
+print('2')
+
+print(f"fuel['Make'].head() : \n{fuel['Make'].head()}")
+print('************************************************')
+
+print('3')
+
+print(f"fuel['Make'].value_counts().head() : \n{fuel['Make'].value_counts().head()}")
+print('************************************************')
+
+print('4')
+
+print(f"fuel.loc[1873] : \n{fuel.loc[1873]}")
+print('************************************************')
+
+print('5')
+
+print(f"fuel.loc[1873, 'Combined MPG (FT1)'] : \n{fuel.loc[1873, 'Combined MPG (FT1)']}")
+print('************************************************')
+
+print('6')
+
+print(f"fuel['Combined MPG (FT1)'].max() : \n{fuel['Combined MPG (FT1)'].max()}")
+print('************************************************')
+
+print('7')
+
+print(f"fuel['Combined MPG (FT1)'].idxmax() : \n{fuel['Combined MPG (FT1)'].idxmax()}")
+print('************************************************')
+
+print('8')
+
+index = fuel['Combined MPG (FT1)'].idxmax()
+
+print(f"index = fuel['Combined MPG (FT1)'].idxmax()")
+print(f"fuel.loc[index] : \n{fuel.loc[index]}")
+print('************************************************')
+
+print('10')
+
+short_fuel = fuel[['Make', 'Model']]
+
+print("short_fuel = fuel[['Make', 'Model']]")
+print(f"short_fuel.head() : \n{short_fuel.head()}")
+print('************************************************')

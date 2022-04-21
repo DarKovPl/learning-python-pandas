@@ -18,4 +18,50 @@ mc_selected = pd.read_csv(
 )
 
 print(mc_selected.head())
-print('------------------------------------------------')
+print('**********************************************')
+
+# Laboratory
+
+fuel = pd.read_csv(
+    '../files_to_process/course-files/fuel.csv',
+    low_memory=False
+)
+
+print('1')
+
+print(fuel)
+print(fuel.head().to_string())
+print('**********************************************')
+
+print('3')
+
+print(fuel.head(10))
+print('**********************************************')
+
+print('4')
+
+print(fuel.tail(5))
+print('**********************************************')
+
+print('5')
+
+fuel = pd.read_csv(
+    '../files_to_process/course-files/fuel.csv',
+    low_memory=False,
+    usecols=['Vehicle ID', 'Year', 'Make', 'Model', 'Class', 'Fuel Type', 'Combined MPG (FT1)']
+)
+
+print(fuel.head())
+print('**********************************************')
+
+print('7')
+
+fuel = pd.read_csv(
+    '../files_to_process/course-files/fuel.csv',
+    low_memory=False,
+    usecols=['Vehicle ID', 'Year', 'Make', 'Model', 'Class', 'Fuel Type', 'Combined MPG (FT1)'],
+    index_col='Vehicle ID'
+)
+
+print(fuel.head())
+print('**********************************************')
