@@ -41,4 +41,48 @@ print('------------------------------------------------')
 print('6')
 
 print(f"frame.nsmallest(n=3, columns='Calories').to_string() :\n{frame.nsmallest(n=3, columns='Calories').to_string()}")
-print('------------------------------------------------')
+print('************************************************')
+
+
+#  Laboratory
+
+print('1')
+
+fortune = pd.read_csv(
+    '../files_to_process/course-files/Fortune_500_2017.csv',
+    usecols=['Rank', 'Title', 'Employees', 'Profits', 'Assets'],
+    index_col='Rank'
+)
+print(f"fortune.head().to_string() : \n{fortune.head().to_string()}")
+print('************************************************')
+
+
+print('2')
+
+fortune['EmployeesRank'] = fortune['Employees'].rank(ascending=False)
+
+print("fortune['EmployeesRank'] = fortune['Employees'].rank(ascending=False) :")
+print(f"{fortune.head().to_string()}")
+print('************************************************')
+
+print('4')
+
+fortune['RankByProfits'] = fortune['Profits'].rank(ascending=False)
+
+print("fortune['RankByProfits'] = fortune['Profits'].rank(ascending=False)  :")
+print(f"fortune.head().to_string() : \n{fortune.head().to_string()}")
+print('************************************************')
+
+
+print('6')
+
+
+print(f"fortune.nlargest(n=3, columns='Assets').head().to_string()  : "
+      f"\n{fortune.nlargest(n=3, columns='Assets').head().to_string()}")
+print('************************************************')
+
+print('7')
+
+print(f"fortune.nsmallest(n=3, columns='Assets').head().to_string() : "
+      f"\n{fortune.nsmallest(n=3, columns='Assets').head().to_string()}")
+print('************************************************')

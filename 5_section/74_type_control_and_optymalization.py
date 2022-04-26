@@ -66,4 +66,64 @@ print('9')
 frame['Serving Size'] = frame['Serving Size'].astype('category')
 
 print(f"frame['Serving Size'] = frame['Serving Size'].astype('category') : \n{frame.info(memory_usage='deep')}")
-print('------------------------------------------------')
+print('************************************************')
+
+
+# Laboratory
+
+print('1')
+
+fuel = pd.read_csv(
+    '../files_to_process/course-files/fuel.csv',
+    low_memory=False,
+    usecols=['Vehicle ID', 'Year', 'Make', 'Model', 'Class', 'Fuel Type', 'Combined MPG (FT1)']
+)
+
+print(f"fuel.head().to_string() : \n{fuel.head().to_string()}")
+print('************************************************')
+
+print('2')
+
+print(f"fuel.info(memory_usage='deep') : \n{fuel.info(memory_usage='deep')}")
+print('************************************************')
+
+print('3')
+
+fuel['Year'] = fuel['Year'].astype('int32')
+
+print("fuel['Year'] = fuel['Year'].astype('int32')  :")
+print(f"{fuel.info(memory_usage='deep')}")
+print('************************************************')
+
+print('4')
+
+print(f"fuel['Make'].value_counts() : \n{fuel['Make'].value_counts()}")
+print('************************************************')
+
+print('5')
+
+fuel['Make'] = fuel['Make'].astype('category')
+
+print(f"fuel['Make'] = fuel['Make'].astype('category') : ")
+print(f"{fuel.info(memory_usage='deep')}")
+print('************************************************')
+
+print('6')
+
+fuel['Model'] = fuel['Make'].astype('category')
+fuel['Class'] = fuel['Class'].astype('category')
+fuel['Fuel Type'] = fuel['Fuel Type'].astype('category')
+
+print(f"fuel['Model'] = fuel['Make'].astype('category') : ")
+print(f"fuel['Class'] = fuel['Class'].astype('category') : ")
+print(f"fuel['Fuel Type'] = fuel['Fuel Type'].astype('category'): ")
+print(f"{fuel.info(memory_usage='deep')}")
+print('************************************************')
+
+print('7')
+
+fuel['Combined MPG (FT1)'] = fuel['Combined MPG (FT1)'].astype('float16')
+
+print(f"fuel['Combined MPG (FT1)'] = fuel['Combined MPG (FT1)'].astype('float16'): ")
+print(f"{fuel.info(memory_usage='deep')}")
+print('************************************************')

@@ -52,4 +52,74 @@ print('7')
 
 print(f"(frame[~ is_breakfast]).head().to_string(): "
       f"\n{(frame[~ is_breakfast]).head().to_string()}")
-print('------------------------------------------------')
+print('************************************************')
+
+
+# Laboratory
+
+
+print('1')
+
+fortune = pd.read_csv(
+    '../files_to_process/course-files/Fortune_500_2017.csv',
+    usecols=['Rank', 'Title', 'Employees', 'Profits', 'Assets'],
+    index_col='Rank'
+)
+print(f"fortune.head().to_string() : \n{fortune.head().to_string()}")
+print('************************************************')
+
+print('3')
+
+fortune['RankByEmployees'] = fortune['Employees'].rank(ascending=False)
+
+print("fortune['RankByEmployees'] = fortune['Employees'].rank(ascending=False)")
+print(f"{fortune.head().to_string()}")
+print('************************************************')
+
+print('5')
+
+fortune['RankByProfits'] = fortune['Profits'].rank(ascending=False)
+
+print("fortune['RankByProfits'] = fortune['Profits'].rank(ascending=False)")
+print(f"{fortune.head().to_string()}")
+print('************************************************')
+
+print('6')
+
+is_employees_rank_first_ten = fortune.RankByEmployees <= 10
+
+print("is_employees_rank_first_ten = fortune.RankByEmployees <= 10")
+print(f"fortune[is_employees_rank_first_ten] : "
+      f"\n{fortune[is_employees_rank_first_ten].head().to_string()}")
+print('************************************************')
+
+print('7')
+
+is_profit_first_ten = fortune.RankByProfits <= 10
+
+print("is_profit_first_ten = fortune.RankByProfits <= 10")
+print(f"{fortune[is_profit_first_ten].head(10).to_string()}")
+print('************************************************')
+
+print('8')
+
+print(f"fortune[is_employees_rank_first_ten & is_profit_first_ten].head().to_string() : "
+      f"\n{fortune[is_employees_rank_first_ten & is_profit_first_ten].head().to_string()}")
+print('************************************************')
+
+print('9')
+
+is_employees_rank_more_400 = fortune.RankByEmployees >= 400
+
+print("is_employees_rank_more_400 = fortune.RankByEmployees >= 400")
+print(f"fortune[is_employees_rank_first_ten & is_profit_first_ten].head().to_string() : "
+      f"\n{fortune[is_employees_rank_more_400].head().to_string()}")
+print('************************************************')
+
+print('10')
+
+
+print(f"fortune[is_employees_rank_more_400 & is_profit_first_ten].head().to_string() : "
+      f"\n{fortune[is_employees_rank_more_400 & is_profit_first_ten].head().to_string()}")
+print('************************************************')
+
