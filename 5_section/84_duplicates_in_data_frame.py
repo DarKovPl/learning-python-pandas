@@ -62,4 +62,63 @@ print('9')
 
 print(f"clothes.drop_duplicates(subset=['color', 'size]) : "
       f"\n{clothes.drop_duplicates(subset=['color', 'size'])}")
-print('------------------------------------------------')
+print('************************************************')
+
+# Laboratory
+
+print('1')
+
+surveys = pd.read_csv(
+    '../files_to_process/course-files/StackOverflowDeveloperSurvey2018.csv',
+    usecols=['Country', 'Gender', 'OperatingSystem'],
+    low_memory=False
+)
+
+print(f"{surveys.head().to_string()}")
+print('************************************************')
+
+print('2')
+
+print(f"surveys['Country'].is_unique : \n{surveys['Country'].is_unique}")
+print('************************************************')
+
+print('3')
+
+countries = surveys['Country'].duplicated()
+
+print("countries = surveys['Country'].duplicated()")
+print(f"surveys[~ countries].head(20).to_string() : \n{surveys[~ countries].head(20).to_string()}")
+print('************************************************')
+
+print('4')
+
+print(f"surveys['Country'].nunique() : without NaN : \n{surveys['Country'].nunique()}\n")
+print(f"len(surveys['Country'].unique()) : with NaN : \n{len(surveys['Country'].unique())}")
+print('************************************************')
+
+print('5')
+
+duplicated_keep_first = surveys.duplicated(subset='Country')
+
+print("duplicated_keep_first = surveys['Country'].duplicated(keep='first')")
+print(f"duplicated_keep_first : \n{duplicated_keep_first}")
+print('************************************************')
+
+print('6')
+
+print(f"surveys[~ duplicated_keep_first] : \n{surveys[~ duplicated_keep_first]}")
+print('************************************************')
+
+print('7')
+
+no_duplicates = surveys.drop_duplicates(subset=['Country', 'OperatingSystem'], keep='first')
+
+print("no_duplicates = surveys.drop_duplicates(subset=['Country', 'OperatingSystem'], keep='first')")
+print(f"no_duplicates : \n{no_duplicates}")
+print('************************************************')
+
+print('9')
+
+condition = "Country == 'Poland'"
+print(f"{no_duplicates.query(condition)}")
+print('************************************************')
