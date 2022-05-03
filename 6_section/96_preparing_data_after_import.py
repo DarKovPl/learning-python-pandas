@@ -125,5 +125,12 @@ print(f"frame.head().to_string() : \n{frame.head().to_string()}\n")
 
 print("frame.info(memory_usage='deep') : \n")
 print(f"{frame.info(memory_usage='deep')}")
-print('------------------------------------------------')
+print('************************************************')
+
+
+# Laboratory
+
+print('1')
+
+
 

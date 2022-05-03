@@ -70,4 +70,56 @@ frame.loc[is_younger_than_25, "Holders"] += 1000
 
 print('frame.loc[is_younger_than_25, "Holders"] += 1000')
 print(f"frame.head().to_string() : \n{frame.head().to_string()}")
-print('------------------------------------------------')
+print('************************************************')
+
+# Laboratory
+
+print('1')
+
+professions = pd.read_csv(
+    '../files_to_process/course-files/Prestige.csv',
+    index_col='name'
+)
+
+print(f"{professions.head().to_string()}")
+print('************************************************')
+
+print('2')
+
+professions.loc['chemists', 'type'] = 'scientist'
+
+print("professions.loc['chemists', 'type'] = 'scientist'")
+print(f"professions.head().to_string() : \n{professions.head().to_string()}")
+print('************************************************')
+
+print('3')
+
+is_scientist = professions['type'] == 'scientist'
+
+print("is_scientist = professions['type'] == 'scientist'")
+print(f"is_scientist.head() : \n{is_scientist.head()}")
+print('************************************************')
+
+print('4')
+
+professions.loc[is_scientist, 'prestige'] = 90
+
+print("professions.loc[is_scientist, 'prestige'] = 90")
+print(f"professions.head() : \n{professions.head()}")
+print('************************************************')
+
+print('5')
+
+professions.loc[is_scientist, 'income'] = professions.loc[is_scientist, 'income'] * 1.5
+
+print("professions.loc[is_scientist, 'income'] = professions.loc[is_scientist, 'income'] * 1.5")
+print(f"professions.head() : \n{professions.head()}")
+print('************************************************')
+
+print('6')
+
+professions.loc[is_scientist, 'income'] *= 1.5
+
+print("professions.loc[is_scientist, 'income'] *= 1.5")
+print(f"{professions.head()}")
+print('************************************************')
