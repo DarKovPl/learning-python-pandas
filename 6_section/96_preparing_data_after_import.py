@@ -132,5 +132,59 @@ print('************************************************')
 
 print('1')
 
+fb = pd.read_csv(
+    '../files_to_process/course-files/mrbean_facebook_statuses_with_nulls.csv'
+)
 
+print(f"fb.head().to_string() : \n{fb.head().to_string()}")
+print('************************************************')
 
+print('2')
+
+print(f"fb.info(memory_usage='deep') : \n{fb.info(memory_usage='deep')}")
+print('************************************************')
+
+print('3')
+
+fb = pd.read_csv(
+    '../files_to_process/course-files/mrbean_facebook_statuses_with_nulls.csv',
+    usecols=["status_message", "status_type", "link_name", "num_reactions", "num_shares", "num_likes"]
+)
+
+print(f"fb.info(memory_usage='deep') : \n{fb.info(memory_usage='deep')}")
+print('************************************************')
+
+print('4')
+
+print(f"fb.count() : \n{fb.count()}")
+print('---------')
+
+print(f"fb['status_type'].nunique() : \n{fb['status_type'].nunique()}")
+print('---------')
+print(f"fb['status_type'].value_counts() : \n{fb['status_type'].value_counts()}")
+print('---------')
+
+fb['status_type'] = fb['status_type'].astype('category')
+print(f"{fb.info(memory_usage='deep')}")
+print('--------------------------------------------------')
+
+print(f"fb['link_name'].nunique() : \n{fb['link_name'].nunique()}")
+print('---------')
+print(f"fb['link_name'].value_counts() : \n{fb['link_name'].value_counts()}")
+print('---------')
+
+fb['link_name'] = fb['link_name'].astype('category')
+print(f"{fb.info(memory_usage='deep')}")
+print('************************************************')
+
+print('5')
+fb['num_reactions'].fillna(value=0, inplace=True)
+fb['num_shares'].fillna(value=0, inplace=True)
+
+fb['num_reactions'] = fb['num_reactions'].astype('int')
+fb['num_shares'] = fb['num_shares'].astype('int')
+fb['num_shares'] = fb['num_shares'].astype('int')
+
+print(f"fb.head(10).to_string() : \n{fb.head(10).to_string()}")
+print(f"{fb.info(memory_usage='deep')}")
+print('************************************************')
