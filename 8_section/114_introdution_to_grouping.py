@@ -1,4 +1,8 @@
 import pandas as pd
+import numpy as np
+from datetime import datetime
+from datetime import timedelta
+import time
 
 products = pd.read_csv(
     '../files_to_process/course-files/WA_Sales_Products_2012-14.csv'
@@ -49,4 +53,62 @@ print('------------------------------------------------')
 print('6')
 
 print(f"{my_own_groups['Mexico'].describe()}")
-print('------------------------------------------------')
+print('**********************************************')
+
+# Laboratory
+
+print('2')
+
+df = pd.read_csv('../files_to_process/course-files/marathon_results_2016.csv', index_col='Bib',
+                 usecols=['Bib', '40K', 'Half', 'Pace', 'Age', 'M/F', 'Country', 'State', 'City']
+)
+
+print(f"df.head() : \n{df.head()}")
+print(f"df.info() : \n{df.info()}")
+print('----------')
+
+df['40K'] = pd.to_timedelta(df['40K'], errors='coerce', unit='H')
+df['Half'] = pd.to_timedelta(df['Half'], errors='coerce', unit='H')
+
+df.dropna(inplace=True)
+
+df['TotalSeconds'] = df['40K'].apply(lambda x: timedelta.total_seconds(x))
+df['HalfSeconds'] = df['Half'].apply(lambda x: timedelta.total_seconds(x))
+
+
+print("df['40K'] = df['40K'].apply(pd.to_timedelta)")
+print("df['Half'] = df['Half'].apply(pd.to_timedelta)")
+print("df['TotalSeconds'] = df['40K'].apply(lambda x: timedelta.total_seconds(x))")
+print("df['HalfSeconds'] = df['Half'].apply(lambda x: timedelta.total_seconds(x))")
+print(f"df.head() : \n{df.head()}")
+print('**********************************************')
+
+print('3')
+
+print(f"df.info() : \n{df.info()}")
+print('----------')
+
+print(f"df.describe() : \n{df.describe()}")
+print('----------')
+
+print(f"df.value_counts() : \n{df.value_counts()}")
+print('----------')
+
+print(f"df['City'].unique() : \n{df['City'].unique()}")
+print('----------')
+
+print(f"df['City'].nunique() : \n{df['City'].nunique()}")
+print('**********************************************')
+
+print('5')
+
+cities = df['City'].unique()
+groups = {}
+
+for city in cities:
+    tmp = df.loc[df['City'] == city]
+    groups[city] = tmp
+print(groups)
+
+print(groups["San Francisco"].describe())
+print('**********************************************')
