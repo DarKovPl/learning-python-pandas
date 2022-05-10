@@ -1,4 +1,6 @@
 import pandas as pd
+from datetime import timedelta
+
 
 products = pd.read_csv(
     '../files_to_process/course-files/WA_Sales_Products_2012-14.csv'
@@ -76,4 +78,63 @@ for country, country_data in groups:
     the_biggest = the_biggest.append(country_data.nlargest(1, 'Revenue'))
 
 print(f"the_biggest.head() : \n{the_biggest.head()}")
-print('------------------------------------------------')
+print('**********************************************')
+
+# Laboratory
+
+
+df = pd.read_csv('../files_to_process/course-files/marathon_results_2016.csv', index_col='Bib',
+                 usecols=['Bib', '40K', 'Half', 'Pace', 'Age', 'M/F', 'Country', 'State', 'City']
+                 )
+
+print(f"df.head() : \n{df.head()}")
+print(f"df.info() : \n{df.info()}")
+print('----------')
+
+df['40K'] = pd.to_timedelta(df['40K'], errors='coerce', unit='H')
+df['Half'] = pd.to_timedelta(df['Half'], errors='coerce', unit='H')
+
+df.dropna(inplace=True)
+
+df['TotalSeconds'] = df['40K'].apply(lambda x: timedelta.total_seconds(x))
+df['HalfSeconds'] = df['Half'].apply(lambda x: timedelta.total_seconds(x))
+
+print("df['40K'] = df['40K'].apply(pd.to_timedelta)")
+print("df['Half'] = df['Half'].apply(pd.to_timedelta)")
+print("df['TotalSeconds'] = df['40K'].apply(lambda x: timedelta.total_seconds(x))")
+print("df['HalfSeconds'] = df['Half'].apply(lambda x: timedelta.total_seconds(x))")
+print(f"df.head() : \n{df.head()}")
+print('**********************************************')
+
+print('3')
+
+group_city = df.groupby('City')
+
+print("group_city = df.groupby('City')")
+print(f"group_city.head() : \n{group_city.head()}")
+print('**********************************************')
+
+print('4')
+
+# for city, city_data in group_city:
+#     print(city)
+print('**********************************************')
+
+# for city, city_data in group_city:
+#     print(f"{city, city_data['Age'].count()}")
+print('**********************************************')
+
+print('7')
+
+for city, city_data in group_city:
+    print(city, city_data['TotalSeconds'].min())
+print('**********************************************')
+
+print('8')
+
+the_best_per_city = pd.DataFrame()
+
+for city, data_city in group_city:
+    the_best_per_city = the_best_per_city.append(data_city.nsmallest(1, 'TotalSeconds'))
+
+print(the_best_per_city)
